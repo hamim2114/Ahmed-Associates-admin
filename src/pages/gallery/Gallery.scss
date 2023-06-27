@@ -1,0 +1,54 @@
+@import '../../global.scss';
+
+.gallery-section {
+  @include flex();
+  flex-direction: column;
+  .add {
+    align-self: flex-end;
+    margin: 3rem;
+    background-color: $color-dark-blue;
+    color: #fafafa;
+    padding: 1rem 3rem;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    @include mobile {
+      font-size: 14px;
+      padding: .7rem 1.5rem;
+      margin: 2rem;
+    }
+    &:hover{
+      background-color: $color-dark;
+    }
+  }
+  .gallery-main {
+    @include flex();
+    padding: 5px;
+    flex-wrap: wrap;
+    gap: 30px;
+    .gallery {
+      width: 300px;
+      @include shadow;
+      .img {
+        img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+        }
+      }
+      .info {
+        @include flex();
+        gap: 20px;
+        span {
+          color: gray;
+        }
+        .btn {
+          @include flex();
+          .delete {
+            color: red;
+          }
+        }
+      }
+    }
+  }
+}

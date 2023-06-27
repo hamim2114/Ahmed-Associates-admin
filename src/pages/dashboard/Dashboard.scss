@@ -1,0 +1,26 @@
+@import '../../global.scss';
+
+.dashboard{
+  .wrapper{
+    margin-top: 3rem;
+    @include flex(center, space-around);
+    @include mobile {
+      margin-top: 3rem;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .total{
+      @include flex();
+      padding: 2rem 3rem;
+      width: 350px;
+      font-size: 2rem;
+      font-weight: bold;
+      @include shadow;
+      border: .5px solid rgba(128, 128, 128, 0.24);
+      color: gray;
+      span{
+        color: $color-yellow;
+      }
+    }
+  }
+}
