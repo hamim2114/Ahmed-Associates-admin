@@ -8,6 +8,7 @@ import Job from './pages/job/Job';
 import Team from './pages/team/Team';
 import Gallery from './pages/gallery/Gallery';
 import { useSelector } from 'react-redux';
+import BlogInput from './components/blogInput/BlogInput';
 
 function App() {
   const {navStatus} = useSelector(state => state.nav);
@@ -48,6 +49,10 @@ function App() {
         {
           path: '/gallery',
           element: <Gallery />
+        },
+        {
+          path: '/blog/create',
+          element: <BlogInput />
         },
       ],
     },

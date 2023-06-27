@@ -1,10 +1,11 @@
 import {AiFillDelete} from 'react-icons/ai'
 import './Blog.scss';
+import { Link } from 'react-router-dom';
 
 const Blog = () => {
   return (
     <div className="blogs-section">
-      <button className="creat">Creat New Blog</button>
+      <Link to='/blog/create' className="creat">Creat New Blog</Link>
       <div className="blog">
         <div className="img-title">
           <img src="/blog1.jpg" alt="" />
