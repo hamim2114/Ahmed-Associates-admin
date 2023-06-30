@@ -13,7 +13,7 @@ const Blog = () => {
           <span>12.06.2023</span>
         </div>
         <div className="btn">
-          <button className="edit">EDIT</button>
+          <Link to='/blog/532366234782' className="edit">EDIT</Link>
           <button className="delete"><AiFillDelete size={24}/></button>
         </div>
       </div>
@@ -24,7 +24,7 @@ const Blog = () => {
           <span>12.06.2023</span>
         </div>
         <div className="btn">
-          <button className="edit">EDIT</button>
+          <Link to='/blog/532366234782' className="edit">EDIT</Link>
           <button className="delete"><AiFillDelete size={24}/></button>
         </div>
       </div>
@@ -35,21 +35,11 @@ const Blog = () => {
           <span>12.06.2023</span>
         </div>
         <div className="btn">
-          <button className="edit">EDIT</button>
+          <Link to='/blog/532366234782' className="edit">EDIT</Link>
           <button className="delete"><AiFillDelete size={24}/></button>
         </div>
       </div>
-      <div className="blog">
-        <div className="img-title">
-          <img src="/blog1.jpg" alt="" />
-          <h4>Justice May For You If You Are Innocent ...</h4>
-          <span>12.06.2023</span>
-        </div>
-        <div className="btn">
-          <button className="edit">EDIT</button>
-          <button className="delete"><AiFillDelete size={24}/></button>
-        </div>
-      </div>
+      
     </div>
   )
 }

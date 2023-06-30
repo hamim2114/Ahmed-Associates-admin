@@ -24,9 +24,11 @@
     }
     &-sidebar{
       flex: 1;
-      &.active{
-        @include mobile {
-          margin-left: -100%;
+      @include mobile {
+        position: absolute;
+        left: -100%;
+          &.active{
+            left: 0;
         }
       }
     }

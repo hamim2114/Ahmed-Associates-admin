@@ -1,10 +1,12 @@
 import { AiFillDelete } from 'react-icons/ai'
+import { MdFileUpload } from 'react-icons/md'
 import './Gallery.scss';
 
 const Gallery = () => {
   return (
     <div className="gallery-section">
-      <button className="add">Add</button>
+      <label className="add" htmlFor="gallery-img"><MdFileUpload />ADD</label>
+      <input type='file' id='gallery-img' hidden/>
       <div className="gallery-main">
         <div className="gallery">
           <div className="img">

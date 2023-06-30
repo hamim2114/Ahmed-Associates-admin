@@ -1,17 +1,18 @@
 import {AiFillDelete} from 'react-icons/ai'
 import './Job.scss';
+import { Link } from 'react-router-dom';
 
 const Job = () => {
   return (
     <div className="job-section">
-      <button className="creat">Add New Job</button>
+      <Link to='/job/create' className="creat">Add New Job</Link>
       <div className="job">
         <div className="info">
           <h4>Criminal Defense Attorney</h4>
           <span>12.06.2023</span>
         </div>
         <div className="btn">
-          <button className="edit">EDIT</button>
+          <Link to='/job/337548745365465' className="edit">EDIT</Link>
           <button className="delete"><AiFillDelete size={24}/></button>
         </div>
       </div>
@@ -21,7 +22,7 @@ const Job = () => {
           <span>12.06.2023</span>
         </div>
         <div className="btn">
-          <button className="edit">EDIT</button>
+          <Link to='/job/337548745365465' className="edit">EDIT</Link>
           <button className="delete"><AiFillDelete size={24}/></button>
         </div>
       </div>
@@ -31,10 +32,11 @@ const Job = () => {
           <span>12.06.2023</span>
         </div>
         <div className="btn">
-          <button className="edit">EDIT</button>
+          <Link to='/job/337548745365465' className="edit">EDIT</Link>
           <button className="delete"><AiFillDelete size={24}/></button>
         </div>
       </div>
+      
     </div>
   )
 }

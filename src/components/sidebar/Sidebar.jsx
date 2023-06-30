@@ -1,21 +1,25 @@
 import { Link, useLocation } from 'react-router-dom';
-import {AiFillHome} from 'react-icons/ai';
-import {FaRegNewspaper} from 'react-icons/fa';
-import {MdWork} from 'react-icons/md';
-import {RiTeamFill,RiGalleryFill} from 'react-icons/ri';
+import { AiFillHome } from 'react-icons/ai';
+import { FaRegNewspaper } from 'react-icons/fa';
+import { MdWork } from 'react-icons/md';
+import { RiTeamFill, RiGalleryFill } from 'react-icons/ri';
 import './Sidebar.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { setNavStatus } from '../../redux/navslice';
 
 const Sidebar = () => {
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
+  const { navStatus: nav } = useSelector(state => state.nav);
+  const dispatch = useDispatch();
 
   return (
-    <div className="sidebar">
+    <div className='sidebar'>
       <div className="list">
-        <Link to='/' className={`list-item ${pathname === '/' ? 'active' : ''}`}><AiFillHome/> Dashboard</Link>
-        <Link to='/blog' className={`list-item ${pathname === '/blog' ? 'active' : ''}`}><FaRegNewspaper/> Blog</Link>
-        <Link to='/job' className={`list-item ${pathname === '/job' ? 'active' : ''}`}><MdWork/> Job</Link>
-        <Link to='/team' className={`list-item ${pathname === '/team' ? 'active' : ''}`}><RiTeamFill/> Team</Link>
-        <Link to='/gallery' className={`list-item ${pathname === '/gallery' ? 'active' : ''}`}><RiGalleryFill/> Gallery</Link>
+        <Link to='/' className={`list-item ${pathname === '/' ? 'active' : ''}`} onClick={() => dispatch(setNavStatus(!nav))}><AiFillHome /> Dashboard</Link>
+        <Link to='/blog' className={`list-item ${pathname === '/blog' ? 'active' : ''}`} onClick={() => dispatch(setNavStatus(!nav))}><FaRegNewspaper /> Blog</Link>
+        <Link to='/job' className={`list-item ${pathname === '/job' ? 'active' : ''}`} onClick={() => dispatch(setNavStatus(!nav))}><MdWork /> Job</Link>
+        <Link to='/team' className={`list-item ${pathname === '/team' ? 'active' : ''}`} onClick={() => dispatch(setNavStatus(!nav))}><RiTeamFill /> Team</Link>
+        <Link to='/gallery' className={`list-item ${pathname === '/gallery' ? 'active' : ''}`} onClick={() => dispatch(setNavStatus(!nav))}><RiGalleryFill /> Gallery</Link>
       </div>
     </div>
   )

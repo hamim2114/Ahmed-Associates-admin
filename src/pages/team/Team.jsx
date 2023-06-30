@@ -1,11 +1,12 @@
 import {AiFillDelete} from 'react-icons/ai'
 import './Team.scss';
+import { Link } from 'react-router-dom';
 
 
 const Team = () => {
   return (
     <div className="team-section">
-      <button className="creat">Add</button>
+      <Link to='/team/add' className="creat">Add</Link>
       <div className="team">
         <div className="img-title">
           <img src="/team1.jpg" alt="" />

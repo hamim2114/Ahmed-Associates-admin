@@ -9,6 +9,10 @@ import Team from './pages/team/Team';
 import Gallery from './pages/gallery/Gallery';
 import { useSelector } from 'react-redux';
 import BlogInput from './components/blogInput/BlogInput';
+import JobInput from './components/jobInput/JobInput';
+import EditJob from './components/editJob/EditJob';
+import EditBlog from './components/editBlog/EditBlog';
+import TeamAdd from './components/teamAdd/TeamAdd';
 
 function App() {
   const {navStatus} = useSelector(state => state.nav);
@@ -18,7 +22,7 @@ function App() {
       <div className='app'>
         <div className="app-topbar"><Topbar /></div>
         <div className="app-home">
-          <div className={`app-home-sidebar ${!navStatus ? 'active' : ''}`}><Sidebar /></div>
+          <div className={`app-home-sidebar ${navStatus ? 'active' : ''}`}><Sidebar /></div>
           <div className="app-home-outlet"><Outlet /></div>
         </div>
       </div>
@@ -39,20 +43,36 @@ function App() {
           element: <Blog />
         },
         {
+          path: '/blog/create',
+          element: <BlogInput />
+        },
+        {
+          path: '/blog/:blogId',
+          element: <EditBlog />
+        },
+        {
           path: '/job',
           element: <Job />
+        },
+        {
+          path: '/job/create',
+          element: <JobInput />
+        },
+        {
+          path: '/job/:jobId',
+          element: <EditJob/>
         },
         {
           path: '/team',
           element: <Team />
         },
         {
-          path: '/gallery',
-          element: <Gallery />
+          path: '/team/add',
+          element: <TeamAdd />
         },
         {
-          path: '/blog/create',
-          element: <BlogInput />
+          path: '/gallery',
+          element: <Gallery />
         },
       ],
     },
