@@ -65,13 +65,41 @@
       margin-right: 1rem;
       .edit{
         text-decoration: none;
-        font-weight: bold;
-        color: rgb(0, 179, 0);
+        padding: 2px 10px;
+        background-color: rgb(0, 179, 0);
+        font-size: 13px;
+        border-radius: 5px;
+        color: rgb(255, 255, 255);
       }
       .delete{
         font-weight: bold;
         color: red;
       }
     }
+  }
+}
+
+.modal-h2{
+  color: $color-dark-blue;
+}
+.modal-p{
+  color: red;
+  margin-bottom: 1rem;
+}
+.modal-cancel{
+  padding: 5px 10px;
+  background-color: $color-dark-blue;
+  color: #fafafa;
+  margin-right: 1rem;
+  &:hover{
+    background-color: rgb(0, 83, 207);
+  }
+}
+.modal-delete{
+  padding: 5px 10px;
+  background-color: red;
+  color: #fafafa;
+  &:hover{
+    background-color: rgb(189, 0, 0);
   }
 }

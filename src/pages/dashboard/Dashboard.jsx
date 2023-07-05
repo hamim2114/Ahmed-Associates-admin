@@ -1,4 +1,5 @@
 import './Dashboard.scss';
+import parse from 'html-react-parser';
 
 const Dashboard = () => {
   return (

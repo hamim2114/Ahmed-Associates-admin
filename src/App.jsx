@@ -1,5 +1,6 @@
 import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.scss'
+import 'react-toastify/dist/ReactToastify.css';
 import Sidebar from './components/sidebar/Sidebar';
 import Topbar from './components/topbar/Topbar';
 import Dashboard from './pages/dashboard/Dashboard';

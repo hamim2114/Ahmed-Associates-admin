@@ -12,7 +12,7 @@
     .total{
       @include flex();
       padding: 2rem 3rem;
-      width: 350px;
+      max-width: 350px;
       font-size: 2rem;
       font-weight: bold;
       @include shadow;
