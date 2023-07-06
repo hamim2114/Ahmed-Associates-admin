@@ -3,29 +3,7 @@
 .gallery-section {
   @include flex();
   flex-direction: column;
-  .add {
-    margin: 3rem;
-    background-color: rgb(235, 235, 235);
-    color: #222222;
-    padding: 2rem 6rem;
-    border: .5px dashed gray;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    @include flex();
-    gap: 5px;
-    svg{
-      font-size: 1.3rem;
-    }
-    @include mobile {
-      font-size: 14px;
-      padding: .7rem 1.5rem;
-      margin: 2rem;
-    }
-    &:hover{
-      background-color: rgb(218, 218, 218);
-    }
-  }
+  
   .gallery-main {
     @include flex();
     padding: 5px;
@@ -86,6 +64,7 @@
     font-size: 17px;
     color: #fff;
     border-radius: 5px;
+    margin-bottom: 1rem;
     &:hover{
       background-color: #a39a80;
     }
