@@ -4,11 +4,11 @@
   @include flex();
   flex-direction: column;
   .add {
-    align-self: flex-end;
     margin: 3rem;
-    background-color: $color-dark-blue;
-    color: #fafafa;
-    padding: 1rem 2rem;
+    background-color: rgb(235, 235, 235);
+    color: #222222;
+    padding: 2rem 6rem;
+    border: .5px dashed gray;
     border-radius: 5px;
     font-size: 16px;
     font-weight: bold;
@@ -23,7 +23,7 @@
       margin: 2rem;
     }
     &:hover{
-      background-color: $color-dark;
+      background-color: rgb(218, 218, 218);
     }
   }
   .gallery-main {
@@ -54,6 +54,40 @@
           }
         }
       }
+    }
+  }
+  .gallery-img{
+    width: 350px;
+    height: 120px;
+    background-color: rgba(240, 240, 240, 0.5);
+    position: relative;
+    border: .5px dashed rgb(206, 204, 204);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    label{
+      position: absolute;
+      bottom: -70px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 4rem;
+      color: $color-yellow;
+    }
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .gallery-btn{
+    background-color: $color-yellow;
+    padding: 10px 60px;
+    font-size: 17px;
+    color: #fff;
+    border-radius: 5px;
+    &:hover{
+      background-color: #a39a80;
     }
   }
 }

@@ -1,25 +1,33 @@
 @import '../../global.scss';
 
 .dashboard{
-  .wrapper{
+  &-wrapper{
     margin-top: 3rem;
-    @include flex(center, space-around);
-    @include mobile {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    @include tablet {
+      align-items: center;
       margin-top: 3rem;
       flex-direction: column;
       gap: 20px;
+  
     }
     .total{
       @include flex();
-      padding: 2rem 3rem;
-      max-width: 350px;
-      font-size: 2rem;
+      padding: 2rem;
+      width: 350px;
+      font-size: 1.5rem;
       font-weight: bold;
       @include shadow;
       border: .5px solid rgba(128, 128, 128, 0.24);
       color: gray;
-      span{
+      display: flex;
+      justify-content: space-between;
+      h4{
         color: $color-yellow;
+        margin-right: 10px;
       }
     }
   }

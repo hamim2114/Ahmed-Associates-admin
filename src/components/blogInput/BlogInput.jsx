@@ -77,7 +77,7 @@ const BlogInput = () => {
       <form className="wrapper" onSubmit={handlePost}>
         <div className="upload-img">
           <label htmlFor="file"><MdFileUpload /></label>
-          <img src={img} alt="Upload Image" />
+          {img && <img src={img} alt="Upload Image" />}
         </div>
         <input type="file" className="file" hidden name="" id="file" onChange={handleImgChange} />
         <input required type="text" placeholder="Blog Title" onChange={e => setTitle(e.target.value)} />

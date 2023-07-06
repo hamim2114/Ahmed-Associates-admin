@@ -40,39 +40,39 @@ function App() {
           element: <Dashboard />
         },
         {
-          path: '/blog',
+          path: 'blog',
           element: <Blog />
         },
         {
-          path: '/blog/create',
+          path: 'blog/create',
           element: <BlogInput />
         },
         {
-          path: '/blog/:blogId',
+          path: 'blog/:blogId',
           element: <EditBlog />
         },
         {
-          path: '/job',
+          path: 'job',
           element: <Job />
         },
         {
-          path: '/job/create',
+          path: 'job/create',
           element: <JobInput />
         },
         {
-          path: '/job/:jobId',
+          path: 'job/:jobId',
           element: <EditJob/>
         },
         {
-          path: '/team',
+          path: 'team',
           element: <Team />
         },
         {
-          path: '/team/add',
+          path: 'team/add',
           element: <TeamAdd />
         },
         {
-          path: '/gallery',
+          path: 'gallery',
           element: <Gallery />
         },
       ],

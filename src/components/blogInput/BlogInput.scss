@@ -9,6 +9,7 @@
       height: 100px;
       background-color: rgba(128, 128, 128, 0.233);
       position: relative;
+      border: .5px dashed gray;
       margin-bottom: 2rem;
       @include mobile {
         width: 300px;

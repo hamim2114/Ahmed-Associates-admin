@@ -52,9 +52,9 @@ const Blog = () => {
   };
 
   const confirmDelete = async () => {
+    closeDeleteModal();
     mutation.mutate(deleteBlogId);
     if(imgId) await deleteImage(imgId);
-    closeDeleteModal();
   };
 
   return (
@@ -84,7 +84,7 @@ const Blog = () => {
         style={customStyles}
       >
         <h2 className='modal-h2'>Delete Confirmation</h2>
-        <p className='modal-p'>Are you sure you want to delete this blog?</p>
+        <p className='modal-p'>Are you sure you want to Delete this Blog?</p>
         <div>
           <button className='modal-cancel' onClick={closeDeleteModal}>Cancel</button>
           <button className='modal-delete' onClick={confirmDelete}>Delete</button>
