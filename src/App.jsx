@@ -1,4 +1,4 @@
-import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Navigate, Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.scss'
 import 'react-toastify/dist/ReactToastify.css';
 import Sidebar from './components/sidebar/Sidebar';
@@ -14,18 +14,30 @@ import JobInput from './components/jobInput/JobInput';
 import EditJob from './components/editJob/EditJob';
 import EditBlog from './components/editBlog/EditBlog';
 import TeamAdd from './components/teamAdd/TeamAdd';
+import Login from './pages/login/Login';
 
 function App() {
-  const {navStatus} = useSelector(state => state.nav);
+  const { navStatus } = useSelector(state => state.nav);
+  const { admin } = useSelector(state => state.admin);
+
+  const Verify = ({ children }) => {
+    if (admin) {
+      return children
+    } else {
+      return <Navigate to={'/login'} />
+    }
+  }
 
   const Layout = () => {
     return (
       <div className='app'>
-        <div className="app-topbar"><Topbar /></div>
-        <div className="app-home">
-          <div className={`app-home-sidebar ${navStatus ? 'active' : ''}`}><Sidebar /></div>
-          <div className="app-home-outlet"><Outlet /></div>
-        </div>
+        <Verify>
+          <div className="app-topbar"><Topbar /></div>
+          <div className="app-home">
+            <div className={`app-home-sidebar ${navStatus ? 'active' : ''}`}><Sidebar /></div>
+            <div className="app-home-outlet"><Outlet /></div>
+          </div>
+        </Verify>
       </div>
     );
   };
@@ -61,7 +73,7 @@ function App() {
         },
         {
           path: 'job/:jobId',
-          element: <EditJob/>
+          element: <EditJob />
         },
         {
           path: 'team',
@@ -77,6 +89,10 @@ function App() {
         },
       ],
     },
+    {
+      path: '/login',
+      element: admin ? <Navigate to={'/'} /> : <Login />
+    }
   ]);
 
   return <RouterProvider router={router} />;

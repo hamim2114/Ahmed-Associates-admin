@@ -54,7 +54,7 @@ const EditJob = () => {
       [{ indent: '-1' }, { indent: '+1' }], // Indentation options
       [{ align: [] }], 
       [{ color: [] }, { background: [] }],
-      ['link', 'image'],
+      ['link', 'image','video'],
       ['clean'], // Remove formatting option
     ],
   };
