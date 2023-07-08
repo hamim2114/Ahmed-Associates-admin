@@ -35,6 +35,7 @@
     @include mobile {
       padding: 10px 5px;
       flex-direction: column;
+      align-items: flex-start;
       height: 90px;
       justify-content: space-around
     }
@@ -58,6 +59,9 @@
       @include flex();
       gap: 15px;
       margin-right: 1rem;
+      @include mobile {
+        align-self: flex-end;
+      }
       .edit{
         font-weight: bold;
         text-decoration: none;

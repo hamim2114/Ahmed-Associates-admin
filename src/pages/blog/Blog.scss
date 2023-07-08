@@ -33,8 +33,10 @@
     max-width: 1000px;
     height: 70px;
     @include mobile {
-      padding: 10px 5px;
+      padding: 15px 5px;
       flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
       height: 90px;
       justify-content: space-around;
     }
@@ -53,7 +55,6 @@
       font-size: 15px;
       @include mobile {
         font-size: 13px;
-      
       }
     }
     span{
@@ -63,6 +64,9 @@
       @include flex();
       gap: 15px;
       margin-right: 1rem;
+      @include mobile {
+        align-self: flex-end;
+      }
       .edit{
         text-decoration: none;
         padding: 2px 10px;
