@@ -8,9 +8,13 @@ const Dashboard = () => {
   const [teams, setTeams] = useState([]);
   useEffect(() => {
     const getAll = async () => {
-      axiosReq.get('/blog').then(res => setBlogs(res.data));
-      axiosReq.get('/job').then(res => setJobs(res.data));
-      axiosReq.get('/team').then(res => setTeams(res.data));
+      try {
+        axiosReq.get('/blog').then(res => setBlogs(res.data));
+        axiosReq.get('/job').then(res => setJobs(res.data));
+        axiosReq.get('/team').then(res => setTeams(res.data));
+      } catch (error) {
+        console.log(error)
+      }
     }
     getAll();
   }, [])

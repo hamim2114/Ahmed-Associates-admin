@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Topbar.scss';
 import { FiLogOut } from 'react-icons/fi'
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,10 +21,23 @@ const Topbar = () => {
     }
   });
 
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        await axiosReq.get('/auth/verify');
+      } catch (error) {
+        if(error.response.status === 401) {
+          return dispatch(clearAdmin());
+        }
+      }
+    }
+    checkAuth();
+  }, [])
+
   const handleLogout = () => {
     dispatch(clearAdmin());
     mutation.mutate();
-  }
+  };
   return (
     <div className="topbar">
       <img src="/ahmed.png" alt="" />
