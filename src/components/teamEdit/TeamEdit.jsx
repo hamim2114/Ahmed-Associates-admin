@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
-import './TeamAdd.scss'
+import './TeamEdit.scss'
 import { MdFileUpload } from 'react-icons/md'
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
 import { axiosReq } from '../../utils/axiosReq';
 import { toast } from 'react-toastify';
 import { uploadImage } from '../../utils/upload';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 
-const TeamAdd = () => {
+const TeamEdit = () => {
   const [img, setImg] = useState('');
   const [errmsg, setErrmsg] = useState('');
   const [success, setSuccess] = useState(false);
@@ -16,11 +16,27 @@ const TeamAdd = () => {
   const [value, setValue] = useState('')
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false)
+  const [imgUrl, setImgUrl] = useState('')
+
+  const { id } = useParams()
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: ['teamAll'],
+    queryFn: () => axiosReq.get(`/team/${id}`).then(res => res.data)
+  });
+
+  useEffect(() => {
+    if (data) {
+      setInput({name: data.name, title: data.title});
+      setValue(data.desc);
+      setImgUrl(data.img)
+    }
+  }, [data]);
 
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: (input) => axiosReq.post('/team', input),
+    mutationFn: (input) => axiosReq.put(`/team/${id}`, input),
     onSuccess: () => {
       queryClient.invalidateQueries(['team']);
       toast.success('Added Successfully!');
@@ -75,19 +91,19 @@ const TeamAdd = () => {
       <form className='team-form' onSubmit={handleUpload}>
         <div className="upload-img">
           <label htmlFor="file"><MdFileUpload /></label>
-          <img src={img || '/noavatar.png'} alt="image" />
+          <img src={img || imgUrl} alt="image" />
         </div>
         <input type="file" className='file' hidden name="" id="file" onChange={handleImgChange} />
-        <input onChange={handleChange} required name='name' type="text" placeholder='Name' />
-        <input onChange={handleChange} required name='title' type="text" placeholder='Title e.g:family lawer' />
+        <input onChange={handleChange} value={input.name} required name='name' type="text" placeholder='Name' />
+        <input onChange={handleChange} value={input.title} required name='title' type="text" placeholder='Title e.g:family lawer' />
         <div className="team-editor">
           <ReactQuill modules={toolbarOptions} theme="snow" placeholder="Descriptions" value={value} onChange={setValue} required={true} />
         </div>
-        <button className='btn' type='submit'>{loading ? 'Loading..' : 'ADD'}</button>
+        <button disabled={loading} className='btn' type='submit'>{loading ? 'Loading..' : 'UPDATE'}</button>
         <p style={{ color: 'red' }}>{errmsg}</p>
       </form>
     </div>
   )
 }
 
-export default TeamAdd
+export default TeamEdit

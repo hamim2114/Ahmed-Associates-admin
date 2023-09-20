@@ -54,7 +54,7 @@ const Blog = () => {
   const confirmDelete = async () => {
     closeDeleteModal();
     mutation.mutate(deleteBlogId);
-    if(imgId) await deleteImage(imgId);
+    if (imgId) await deleteImage(imgId);
   };
 
   return (
@@ -62,20 +62,24 @@ const Blog = () => {
       <Link to='/blog/create' className="creat">Create New Blog</Link>
       {
         isLoading ? 'Loading..' : error ? 'Something went wrong!' :
-        data.length === 0 ? <h2 style={{ padding: '5rem', color: 'gray' }}>Blog Empty.</h2> :
-          data.map((d, i) => (
-            <div key={i} className="blog">
-              <div className="img-title">
-                <img src={d.img || '/defaultBlog.jpg'} alt="" />
-                <h4>{d.title.substring(0, 50)}</h4>
-                <span>{new Date(d.createdAt).toLocaleDateString()}</span>
+          data.length === 0 ? <h2 style={{ padding: '5rem', color: 'gray' }}>Blog Empty.</h2> :
+            data.map((d, i) => (
+              <div key={i} className="blog">
+                <div className="img-title">
+                  <img src={d.img || '/defaultBlog.jpg'} alt="" />
+                  <h4>{d.title.substring(0, 50)}</h4>
+                  <span>{new Date(d.createdAt).toLocaleDateString('en-GB', {
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric',
+                  })}</span>
+                </div>
+                <div className="btn">
+                  <Link to={`/blog/${d._id}`} className="edit">EDIT</Link>
+                  <button className="delete" onClick={() => openDeleteModal(d._id, d?.imgId)}><AiFillDelete size={24} /></button>
+                </div>
               </div>
-              <div className="btn">
-                <Link to={`/blog/${d._id}`} className="edit">EDIT</Link>
-                <button className="delete" onClick={() => openDeleteModal(d._id, d?.imgId)}><AiFillDelete size={24} /></button>
-              </div>
-            </div>
-          ))
+            ))
       }
       <Modal
         isOpen={isDeleteModalOpen}

@@ -1,4 +1,4 @@
-import { Navigate, Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Navigate, Outlet, Route, RouterProvider, Routes, createBrowserRouter } from 'react-router-dom';
 import './App.scss'
 import 'react-toastify/dist/ReactToastify.css';
 import Sidebar from './components/sidebar/Sidebar';
@@ -15,6 +15,13 @@ import EditJob from './components/editJob/EditJob';
 import EditBlog from './components/editBlog/EditBlog';
 import TeamAdd from './components/teamAdd/TeamAdd';
 import Login from './pages/login/Login';
+import About from './pages/about/About';
+import EditAbout from './components/editAbout/EditAbout';
+import CreateAbout from './components/createAbout/CreateAbout';
+import Practice from './pages/practice/Practice';
+import CreatePractice from './components/createPractice/CreatePractice';
+import EditPractice from './components/editPractice/EditPractice';
+import TeamEdit from './components/teamEdit/TeamEdit';
 
 function App() {
   const { navStatus } = useSelector(state => state.nav);
@@ -42,60 +49,34 @@ function App() {
     );
   };
 
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <Layout />,
-      children: [
-        {
-          path: '/',
-          element: <Dashboard />
-        },
-        {
-          path: 'blog',
-          element: <Blog />
-        },
-        {
-          path: 'blog/create',
-          element: <BlogInput />
-        },
-        {
-          path: 'blog/:blogId',
-          element: <EditBlog />
-        },
-        {
-          path: 'job',
-          element: <Job />
-        },
-        {
-          path: 'job/create',
-          element: <JobInput />
-        },
-        {
-          path: 'job/:jobId',
-          element: <EditJob />
-        },
-        {
-          path: 'team',
-          element: <Team />
-        },
-        {
-          path: 'team/add',
-          element: <TeamAdd />
-        },
-        {
-          path: 'gallery',
-          element: <Gallery />
-        },
-      ],
-    },
-    {
-      path: '/login',
-      element: admin ? <Navigate to={'/'} /> : <Login />
-    }
-  ]);
 
-  return <RouterProvider router={router} />;
+
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="about" element={<About />} />
+          <Route path="about/create" element={<CreateAbout />} />
+          <Route path="about/:aboutId" element={<EditAbout />} />
+          <Route path="practice" element={<Practice />} />
+          <Route path="practice/create" element={<CreatePractice />} />
+          <Route path="practice/:id" element={<EditPractice />} />
+          <Route path="blog" element={<Blog />} />
+          <Route path="blog/create" element={<BlogInput />} />
+          <Route path="blog/:blogId" element={<EditBlog />} />
+          <Route path="job" element={<Job />} />
+          <Route path="job/create" element={<JobInput />} />
+          <Route path="job/:jobId" element={<EditJob />} />
+          <Route path="team" element={<Team />} />
+          <Route path="team/add" element={<TeamAdd />} />
+          <Route path="team/edit/:id" element={<TeamEdit />} />
+          <Route path="gallery" element={<Gallery />} />
+        </Route>
+        <Route path="/login" element={admin ? <Navigate to={'/'} /> : <Login />} />
+      </Routes>
+    </>
+  )
 }
 
 export default App;

@@ -64,7 +64,11 @@ const Job = () => {
               <div key={i} className="job">
                 <div className="info">
                   <h4>{d.title.substring(0, 50)}</h4>
-                  <span>{new Date(d.createdAt).toLocaleDateString()}</span>
+                  <span><b>added: </b>{new Date(d.createdAt).toLocaleDateString('en-GB', {
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric',
+                  })}</span>
                 </div>
                 <div className="btn">
                   <Link to={`/job/${d._id}`} className="edit">EDIT</Link>

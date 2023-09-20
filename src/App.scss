@@ -24,12 +24,13 @@
     }
     &-sidebar{
       flex: 1;
+      transition: .5s;
       @include mobile {
         position: absolute;
         z-index: 1;
-        left: -100%;
+        transform: translateX(-100%);
           &.active{
-            left: 0;
+            transform: translateX(0);
         }
       }
     }

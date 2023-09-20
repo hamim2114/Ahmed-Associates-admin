@@ -1,17 +1,19 @@
 import { AiFillDelete } from 'react-icons/ai'
+import { MdModeEditOutline } from 'react-icons/md'
 import './Team.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { axiosReq } from '../../utils/axiosReq';
 import Modal from 'react-modal';
 import { useState } from 'react';
 import { deleteImage } from '../../utils/upload';
 import { toast } from 'react-toastify';
+import { useEffect } from 'react';
 
 
 const Team = () => {
-  const { isLoading, error, data: team } = useQuery({
-    queryKey: ['team'],
+  const { isLoading, error, data: team, refetch } = useQuery({
+    queryKey: ['teamAlls'],
     queryFn: () => axiosReq.get('/team').then(res => res.data)
   });
 
@@ -25,10 +27,12 @@ const Team = () => {
   const mutation = useMutation({
     mutationFn: (id) => axiosReq.delete(`/team/${id}`),
     onSuccess: () => {
-      queryClient.invalidateQueries(['team']);
+      queryClient.invalidateQueries(['teamAlls']);
       toast.success('Team Member Removed!')
     }
   });
+
+  const navigate = useNavigate()
 
   const openDeleteModal = (id, imgId) => {
     setDeleteTeamId(id);
@@ -43,7 +47,7 @@ const Team = () => {
   const confirmDelete = async () => {
     closeDeleteModal();
     mutation.mutate(deleteTeamId);
-    if(imgId) await deleteImage(imgId);
+    if (imgId) await deleteImage(imgId);
   };
 
   const customStyles = {
@@ -69,10 +73,15 @@ const Team = () => {
                   <img src={t.img || '/noavatar.png'} alt="team" />
                   <h4>{t.name}</h4>
                   <span>{t.title}</span>
-                  <span><b>Added:</b> {new Date(t.createdAt).toLocaleDateString()}</span>
+                  <span><b>Added:</b> {new Date(t.createdAt).toLocaleDateString('en-GB', {
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric',
+                  })}</span>
                 </div>
                 <div className="btn">
                   <button onClick={() => openDeleteModal(t._id, t?.imgId)} className="delete"><AiFillDelete size={24} /></button>
+                  <button onClick={() => navigate(`/team/edit/${t._id}`)} className="edit"><MdModeEditOutline size={24} /></button>
                 </div>
               </div>
             ))

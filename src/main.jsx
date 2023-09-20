@@ -7,16 +7,19 @@ import { persistor, store } from './redux/store'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ToastContainer } from 'react-toastify'
 import { PersistGate } from 'redux-persist/integration/react'
+import { BrowserRouter } from 'react-router-dom'
 
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <Provider store={store}>
-    <QueryClientProvider client={queryClient}>
-      <PersistGate persistor={persistor}>
-        <App />
-      </PersistGate>
-    </QueryClientProvider>
-    <ToastContainer />
-  </Provider>
+  <BrowserRouter>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <PersistGate persistor={persistor}>
+          <App />
+        </PersistGate>
+      </QueryClientProvider>
+      <ToastContainer />
+    </Provider >
+  </BrowserRouter>
 )

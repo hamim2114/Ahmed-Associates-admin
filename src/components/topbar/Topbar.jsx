@@ -26,7 +26,7 @@ const Topbar = () => {
       try {
         await axiosReq.get('/auth/verify');
       } catch (error) {
-        if(error.response.status === 401) {
+        if(error.response.status === 403) {
           return dispatch(clearAdmin());
         }
       }
