@@ -27,7 +27,7 @@ const TeamEdit = () => {
 
   useEffect(() => {
     if (data) {
-      setInput({name: data.name, title: data.title});
+      setInput({name: data.name, title: data.title, phone: data.phone, email: data.email, location: data.location});
       setValue(data.desc);
       setImgUrl(data.img)
     }
@@ -39,8 +39,9 @@ const TeamEdit = () => {
     mutationFn: (input) => axiosReq.put(`/team/${id}`, input),
     onSuccess: () => {
       queryClient.invalidateQueries(['team']);
-      toast.success('Added Successfully!');
+      toast.success('Update Successfully!');
       setSuccess(true);
+      setInput({});
     },
     onError: (err) => setErrmsg(err.response.data)
   });
@@ -96,6 +97,9 @@ const TeamEdit = () => {
         <input type="file" className='file' hidden name="" id="file" onChange={handleImgChange} />
         <input onChange={handleChange} value={input.name} required name='name' type="text" placeholder='Name' />
         <input onChange={handleChange} value={input.title} required name='title' type="text" placeholder='Title e.g:family lawer' />
+        <input onChange={handleChange} value={input.phone} name='phone' type="text" placeholder='Phone' />
+        <input onChange={handleChange} value={input.email} name='email' type="text" placeholder='Email' />
+        <input onChange={handleChange} value={input.location} name='location' type="text" placeholder='Location' />
         <div className="team-editor">
           <ReactQuill modules={toolbarOptions} theme="snow" placeholder="Descriptions" value={value} onChange={setValue} required={true} />
         </div>

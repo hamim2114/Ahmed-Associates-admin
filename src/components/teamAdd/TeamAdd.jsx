@@ -78,8 +78,11 @@ const TeamAdd = () => {
           <img src={img || '/noavatar.png'} alt="image" />
         </div>
         <input type="file" className='file' hidden name="" id="file" onChange={handleImgChange} />
-        <input onChange={handleChange} required name='name' type="text" placeholder='Name' />
-        <input onChange={handleChange} required name='title' type="text" placeholder='Title e.g:family lawer' />
+        <input onChange={handleChange} required name='name' type="text" placeholder='Name*' />
+        <input onChange={handleChange} required name='title' type="text" placeholder='Title*' />
+        <input onChange={handleChange} name='phone' type="text" placeholder='Phone' />
+        <input onChange={handleChange} name='email' type="text" placeholder='Email' />
+        <input onChange={handleChange} name='location' type="text" placeholder='Location' />
         <div className="team-editor">
           <ReactQuill modules={toolbarOptions} theme="snow" placeholder="Descriptions" value={value} onChange={setValue} required={true} />
         </div>

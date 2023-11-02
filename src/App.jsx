@@ -22,6 +22,9 @@ import Practice from './pages/practice/Practice';
 import CreatePractice from './components/createPractice/CreatePractice';
 import EditPractice from './components/editPractice/EditPractice';
 import TeamEdit from './components/teamEdit/TeamEdit';
+import News from './pages/news/News';
+import CreateNews from './components/createNews/CreateNews';
+import EditNews from './components/editNews/EditNews';
 
 function App() {
   const { navStatus } = useSelector(state => state.nav);
@@ -63,6 +66,9 @@ function App() {
           <Route path="practice/create" element={<CreatePractice />} />
           <Route path="practice/:id" element={<EditPractice />} />
           <Route path="blog" element={<Blog />} />
+          <Route path="news" element={<News />} />
+          <Route path="news/create" element={<CreateNews />} />
+          <Route path="news/:id" element={<EditNews />} />
           <Route path="blog/create" element={<BlogInput />} />
           <Route path="blog/:blogId" element={<EditBlog />} />
           <Route path="job" element={<Job />} />

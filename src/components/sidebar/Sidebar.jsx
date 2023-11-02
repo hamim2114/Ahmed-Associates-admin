@@ -21,6 +21,7 @@ const Sidebar = () => {
         <Link to='/about' className={`list-item ${pathname === '/about' ? 'active' : ''}`} onClick={() => dispatch(setNavStatus(!nav))}><FcAbout /> About</Link>
         <Link to='/practice' className={`list-item ${pathname === '/practice' ? 'active' : ''}`} onClick={() => dispatch(setNavStatus(!nav))}><MdOutlineCollectionsBookmark />Services</Link>
         <Link to='/blog' className={`list-item ${pathname === '/blog' ? 'active' : ''}`} onClick={() => dispatch(setNavStatus(!nav))}><FaRegNewspaper /> Blog</Link>
+        <Link to='/news' className={`list-item ${pathname === '/news' ? 'active' : ''}`} onClick={() => dispatch(setNavStatus(!nav))}><FaRegNewspaper /> News</Link>
         <Link to='/job' className={`list-item ${pathname === '/job' ? 'active' : ''}`} onClick={() => dispatch(setNavStatus(!nav))}><MdWork /> Job</Link>
         <Link to='/team' className={`list-item ${pathname === '/team' ? 'active' : ''}`} onClick={() => dispatch(setNavStatus(!nav))}><RiTeamFill /> Team</Link>
         <Link to='/gallery' className={`list-item ${pathname === '/gallery' ? 'active' : ''}`} onClick={() => dispatch(setNavStatus(!nav))}><RiGalleryFill /> Gallery</Link>
