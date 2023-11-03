@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import './CreateNews.scss';
+import './CreateServices.scss';
 import { MdFileUpload } from 'react-icons/md';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { axiosReq } from '../../utils/axiosReq';
@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import { uploadImage } from '../../utils/upload';
 import { useEffect } from 'react';
 
-const CreateNews = () => {
+const CreateServices = () => {
   const [value, setValue] = useState('');
   const [title, setTitle] = useState('');
   const [img, setImg] = useState('');
@@ -22,11 +22,11 @@ const CreateNews = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: (input) => axiosReq.post('/news', input),
+    mutationFn: (input) => axiosReq.post('/legalServices', input),
     onSuccess: () => {
-      queryClient.invalidateQueries(['news']);
+      queryClient.invalidateQueries(['legalServices create']);
       setCreateSuccess(true);
-      toast.success('News Created Successfully!');
+      toast.success('Created Successfully!');
     },
     onError: (err) => setErrmsg(err.response.data)
   });
@@ -48,7 +48,7 @@ const CreateNews = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (createSuccess) {
-      navigate('/news');
+      navigate('/services');
     }
   }, [createSuccess])
 
@@ -73,19 +73,19 @@ const CreateNews = () => {
     ],
   };
   return (
-    <div className="newsInput">
+    <div className="blogInput">
       <form className="wrapper" onSubmit={handlePost}>
-        {/* <div className="upload-img">
+        <div className="upload-img">
           <label htmlFor="file"><MdFileUpload /></label>
           {img && <img src={img} alt="Upload Image" />}
         </div>
-        <input type="file" className="file" hidden name="" id="file" onChange={handleImgChange} /> */}
-        <input required type="text" placeholder="News Title" onChange={e => setTitle(e.target.value)} />
+        <input type="file" className="file" hidden name="" id="file" onChange={handleImgChange} />
+        <input required type="text" placeholder="Title" onChange={e => setTitle(e.target.value)} />
         <div className="editor">
-          <ReactQuill modules={toolbarOptions} theme="snow" placeholder="News Descriptions" value={value} onChange={setValue} required={true} />
+          <ReactQuill modules={toolbarOptions} theme="snow" placeholder="Descriptions" value={value} onChange={setValue} required={true} />
         </div>
-        <button disabled={loading} type='submit' className="news-btn">
-          {loading ? 'Loading...' : 'POST'}
+        <button disabled={loading} type='submit' className="blog-btn">
+          {loading ? 'Loading...' : 'Add'}
         </button>
         <p style={{color: 'red'}}>{errmsg}</p>
       </form>
@@ -93,4 +93,4 @@ const CreateNews = () => {
   );
 };
 
-export default CreateNews;
+export default CreateServices;

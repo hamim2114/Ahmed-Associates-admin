@@ -18,13 +18,15 @@ import Login from './pages/login/Login';
 import About from './pages/about/About';
 import EditAbout from './components/editAbout/EditAbout';
 import CreateAbout from './components/createAbout/CreateAbout';
-import Practice from './pages/practice/Practice';
 import CreatePractice from './components/createPractice/CreatePractice';
 import EditPractice from './components/editPractice/EditPractice';
 import TeamEdit from './components/teamEdit/TeamEdit';
 import News from './pages/news/News';
 import CreateNews from './components/createNews/CreateNews';
 import EditNews from './components/editNews/EditNews';
+import LegalServices from './pages/legalServices/LegalServices';
+import CreateServices from './components/createService/CreateServices';
+import EditServices from './components/editServices/EditServices';
 
 function App() {
   const { navStatus } = useSelector(state => state.nav);
@@ -62,9 +64,9 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="about/create" element={<CreateAbout />} />
           <Route path="about/:aboutId" element={<EditAbout />} />
-          <Route path="practice" element={<Practice />} />
-          <Route path="practice/create" element={<CreatePractice />} />
-          <Route path="practice/:id" element={<EditPractice />} />
+          <Route path="services" element={<LegalServices />} />
+          <Route path="services/create" element={<CreateServices />} />
+          <Route path="services/:id" element={<EditServices />} />
           <Route path="blog" element={<Blog />} />
           <Route path="news" element={<News />} />
           <Route path="news/create" element={<CreateNews />} />
